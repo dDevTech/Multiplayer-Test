@@ -1,0 +1,15 @@
+package comun;
+
+public class Evento {
+	private int tipoDeEvento;
+
+	public Evento(int tipoDeEvento){
+		this.tipoDeEvento = tipoDeEvento;
+		
+	}
+
+	public int getTipoDeEvento() {
+		return tipoDeEvento;
+	}
+	
+}

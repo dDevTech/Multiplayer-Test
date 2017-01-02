@@ -1,0 +1,17 @@
+package comun;
+
+import java.io.Serializable;
+
+public class Coordenadas implements Serializable{
+	private int movimiento;
+
+	public Coordenadas(int movimiento){
+		this.movimiento = movimiento;
+		
+	}
+
+	public int getMovimiento() {
+		return movimiento;
+	}
+	
+}

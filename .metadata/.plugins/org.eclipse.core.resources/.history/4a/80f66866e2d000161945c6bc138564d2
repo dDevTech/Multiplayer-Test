@@ -1,0 +1,15 @@
+package comun;
+
+public class Coordenadas {
+	private int movimiento;
+
+	public Coordenadas(int movimiento){
+		this.movimiento = movimiento;
+		
+	}
+
+	public int getMovimiento() {
+		return movimiento;
+	}
+	
+}

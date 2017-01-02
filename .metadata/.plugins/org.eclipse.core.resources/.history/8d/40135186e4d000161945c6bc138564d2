@@ -1,0 +1,17 @@
+package main.graphics;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class Circulo {
+	private int radio;
+
+	public Circulo(int radio){
+		this.radio = radio;
+		
+	}
+	public void dibujarCirculo(Graphics g,int x,int y){
+		g.setColor(Color.DARK_GRAY);
+		g.fillOval(x, y, radio*2, radio*2);
+	}
+}

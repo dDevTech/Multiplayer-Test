@@ -1,0 +1,84 @@
+package main.cliente;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+import comun.Constantes;
+import comun.Coordenadas;
+import comun.Evento;
+import main.graphics.Ventana;
+
+public class MainCliente {
+
+	private static Socket s;
+	private static Ventana v;
+	private static boolean connected = true;
+	static OutputStream os;
+	static InputStream is;
+	static ObjectOutputStream oos;
+	static ObjectInputStream ois;
+
+	public static void main(String[] args) {
+		v = new Ventana();
+		try {
+			s = new Socket(Constantes.HOST, Constantes.PORT);
+			
+			os = s.getOutputStream();
+			oos = new ObjectOutputStream(os);
+			is = s.getInputStream();
+			ois = new ObjectInputStream(is);
+
+		} catch (UnknownHostException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (connected) {
+
+					try {
+
+						Object o = ois.readObject();
+
+						if (o instanceof Coordenadas) {
+							Coordenadas coor = (Coordenadas) o;
+							v.getP().getC().setX(coor.getX());
+							v.getP().getC().setY(coor.getY());
+
+						}
+
+					} catch (IOException e) {
+						connected = false;
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						connected = false;
+						e.printStackTrace();
+					}
+
+				}
+
+			}
+		});
+		t.start();
+	}
+
+	public static void enviarMensajeAlServidor(Evento ev) {
+		try {
+			oos.writeObject(ev);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+}

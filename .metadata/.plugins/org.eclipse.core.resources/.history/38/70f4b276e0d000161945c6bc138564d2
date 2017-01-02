@@ -1,0 +1,29 @@
+package servidor;
+
+public class Inteligencia {
+	private int Vx,Vy=0;
+	public  static void mover(int movimiento){
+		switch(movimiento){
+		//ARRIBA-PRESSED
+		case 1:
+		
+		break;
+		//ABAJO-PRESSED
+		case 2:
+			
+		break;
+		//DERECHA-PRESSED
+		case 3:
+			
+		break;
+		//IZQUIERDA-PRESSED
+		case 4:
+			
+		break;
+		
+		default:
+			
+		break;
+		}
+	}
+}

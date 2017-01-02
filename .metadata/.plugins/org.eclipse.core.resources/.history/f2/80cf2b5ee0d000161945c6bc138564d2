@@ -1,0 +1,8 @@
+package servidor;
+
+public class Inteligencia {
+	
+	public  static void mover(int movimiento){
+		
+	}
+}

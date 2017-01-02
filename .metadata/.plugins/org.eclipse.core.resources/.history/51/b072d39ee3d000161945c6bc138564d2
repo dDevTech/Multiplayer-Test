@@ -1,0 +1,7 @@
+package main.graphics;
+
+import java.awt.Container;
+
+public class Panel extends Container {
+
+}
